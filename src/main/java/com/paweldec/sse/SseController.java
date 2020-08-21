@@ -18,7 +18,7 @@ public class SseController {
         return Flux.interval(Duration.ofSeconds(1))
                 .map(sequence ->  ServerSentEvent.<TimeEvent> builder()
                         .id(String.valueOf(sequence))
-                        .event("message") // <-- event name is important if u want catch events directly by EventSource::onmessage in frontend
+                        .event("message") // <-- event name is important if u want catch events directly by EventSource::onmessage
                         .data(TimeEvent.builder()
                             .time(LocalTime.now())
                             .build())
